@@ -48,3 +48,29 @@ func TestMaintainWriteMore(t *testing.T) {
 	maintainWriteMore := rtu.MaintainWriteMore(0x01, 0x0001, 0x0002, []uint16{0x000A, 0x0102})
 	t.Logf("%X", maintainWriteMore)
 }
+
+func TestServer(t *testing.T) {
+	var data = [][]byte{
+		rtu.CoilRead(0x01, 0x1113, 0x0025),
+		rtu.MaintainRead(0x01, 0x006B, 0x0003),
+	}
+	listen, err := rtu.Listen("", 1122)
+	if err != nil {
+		t.Fatal(err)
+		return
+	}
+	conn, err := listen.Accept()
+	if err != nil {
+		t.Fatal(err)
+		return
+	}
+	defer conn.Close()
+	for i := range data {
+		readBuf, err := rtu.RtuWrite(&conn, &data[i])
+		if err != nil {
+			t.Fatal(err)
+			return
+		}
+		t.Logf("发送%X\n接收%X\n", data[i], readBuf)
+	}
+}

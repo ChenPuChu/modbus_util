@@ -4,9 +4,7 @@
 // @Update  朱宗辉  2024/8/15 21:42
 package rtu
 
-import (
-	"modbus_util/crc"
-)
+import "gitee.com/zhu_zonghui/modbus_util/crc"
 
 // CoilRead 读取线圈寄存器
 func CoilRead(slaveAddr uint8, startAddr uint16, number uint16) []byte {

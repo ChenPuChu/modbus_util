@@ -4,7 +4,7 @@
 // @Update  朱宗辉  2024/8/15 22:17
 package rtu
 
-import "modbus_util/crc"
+import "gitee.com/zhu_zonghui/modbus_util/crc"
 
 // MaintainRead 读保持寄存器
 func MaintainRead(slaveAddr uint8, startAddr uint16, number uint16) []byte {

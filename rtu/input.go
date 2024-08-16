@@ -4,7 +4,7 @@
 // @Update  朱宗辉  2024/8/15 22:27
 package rtu
 
-import "modbus_util/crc"
+import "gitee.com/zhu_zonghui/modbus_util/crc"
 
 func InputRead(slaveAddr uint8, startAddr uint16, number uint16) []byte {
 	var buf = []byte{slaveAddr, 0x04, byte((startAddr >> 8) & 0xFF), byte(startAddr & 0xFF), byte((number >> 8) & 0xFF), byte(number & 0xFF)}

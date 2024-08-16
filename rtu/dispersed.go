@@ -4,7 +4,7 @@
 // @Update  朱宗辉  2024/8/15 22:14
 package rtu
 
-import "modbus_util/crc"
+import "gitee.com/zhu_zonghui/modbus_util/crc"
 
 // DispersedRead 读离散输入寄存器
 func DispersedRead(slaveAddr uint8, startAddr uint16, number uint16) []byte {
